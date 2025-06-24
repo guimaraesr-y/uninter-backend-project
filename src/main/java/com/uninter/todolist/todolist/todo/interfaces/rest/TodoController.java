@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/todos")
+@RequestMapping("/todos")
 @RequiredArgsConstructor
 public class TodoController {
     private final TodoService todoService;
@@ -23,13 +23,13 @@ public class TodoController {
     @PostMapping
     public ResponseEntity<TodoResponseDto> createTodo(@Valid @RequestBody CreateTodoDto request) {
         TodoResponseDto todo = todoService.createTodo(request);
-        
+
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
                 .buildAndExpand(todo.id())
                 .toUri();
-                
+
         return ResponseEntity.created(location).body(todo);
     }
 
