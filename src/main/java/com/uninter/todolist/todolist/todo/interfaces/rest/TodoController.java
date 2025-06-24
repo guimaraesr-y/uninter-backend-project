@@ -1,9 +1,9 @@
-package com.example.todolist.interfaces.rest;
+package com.uninter.todolist.todolist.todo.interfaces.rest;
 
-import com.example.todolist.application.TodoService;
-import com.example.todolist.application.dto.CreateTodoDto;
-import com.example.todolist.application.dto.TodoResponseDto;
-import com.example.todolist.application.dto.UpdateTodoDto;
+import com.uninter.todolist.todolist.todo.application.TodoService;
+import com.uninter.todolist.todolist.todo.application.dto.CreateTodoDto;
+import com.uninter.todolist.todolist.todo.application.dto.TodoResponseDto;
+import com.uninter.todolist.todolist.todo.application.dto.UpdateTodoDto;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

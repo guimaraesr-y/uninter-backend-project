@@ -1,6 +1,6 @@
-package com.example.todolist.infrastructure.persistence;
+package com.uninter.todolist.todolist.todo.infrastructure.persistence;
 
-import com.example.todolist.domain.model.TodoItem;
+import com.uninter.todolist.todolist.todo.domain.model.TodoItem;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,7 +15,7 @@ import java.util.UUID;
 public class TodoItemEntity {
 
     @Id
-    @Column(columnDefinition = "uuid")
+    @Column(columnDefinition = "CHAR(36)")
     private UUID id;
     
     @Column(nullable = false)

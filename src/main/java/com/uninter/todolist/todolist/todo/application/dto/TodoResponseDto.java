@@ -1,4 +1,6 @@
-package com.example.todolist.application.dto;
+package com.uninter.todolist.todolist.todo.application.dto;
+
+import com.uninter.todolist.todolist.todo.domain.model.TodoItem;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -10,7 +12,7 @@ public record TodoResponseDto(
     boolean finalizado,
     LocalDateTime dataEntrega
 ) {
-    public static TodoResponseDto fromDomain(com.example.todolist.domain.model.TodoItem todo) {
+    public static TodoResponseDto fromDomain(TodoItem todo) {
         return new TodoResponseDto(
             todo.getId(),
             todo.getNome(),

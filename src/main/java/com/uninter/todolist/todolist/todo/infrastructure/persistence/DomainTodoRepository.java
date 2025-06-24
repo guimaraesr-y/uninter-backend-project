@@ -1,7 +1,7 @@
-package com.example.todolist.infrastructure.persistence;
+package com.uninter.todolist.todolist.todo.infrastructure.persistence;
 
-import com.example.todolist.domain.model.TodoItem;
-import com.example.todolist.domain.repository.TodoRepository;
+import com.uninter.todolist.todolist.todo.domain.model.TodoItem;
+import com.uninter.todolist.todolist.todo.domain.repository.TodoRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

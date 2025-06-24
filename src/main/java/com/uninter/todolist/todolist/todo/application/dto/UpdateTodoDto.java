@@ -1,4 +1,4 @@
-package com.example.todolist.application.dto;
+package com.uninter.todolist.todolist.todo.application.dto;
 
 import java.time.LocalDateTime;
 

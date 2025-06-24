@@ -1,6 +1,6 @@
-package com.example.todolist.domain.repository;
+package com.uninter.todolist.todolist.todo.domain.repository;
 
-import com.example.todolist.domain.model.TodoItem;
+import com.uninter.todolist.todolist.todo.domain.model.TodoItem;
 
 import java.util.List;
 import java.util.Optional;

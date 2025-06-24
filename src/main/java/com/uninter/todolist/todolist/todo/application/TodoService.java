@@ -1,10 +1,10 @@
-package com.example.todolist.application;
+package com.uninter.todolist.todolist.todo.application;
 
-import com.example.todolist.application.dto.CreateTodoDto;
-import com.example.todolist.application.dto.TodoResponseDto;
-import com.example.todolist.application.dto.UpdateTodoDto;
-import com.example.todolist.domain.model.TodoItem;
-import com.example.todolist.domain.repository.TodoRepository;
+import com.uninter.todolist.todolist.todo.application.dto.CreateTodoDto;
+import com.uninter.todolist.todolist.todo.application.dto.TodoResponseDto;
+import com.uninter.todolist.todolist.todo.application.dto.UpdateTodoDto;
+import com.uninter.todolist.todolist.todo.domain.model.TodoItem;
+import com.uninter.todolist.todolist.todo.domain.repository.TodoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

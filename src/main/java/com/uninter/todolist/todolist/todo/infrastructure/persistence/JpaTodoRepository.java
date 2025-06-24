@@ -1,4 +1,4 @@
-package com.example.todolist.infrastructure.persistence;
+package com.uninter.todolist.todolist.todo.infrastructure.persistence;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

@@ -1,7 +1,7 @@
-package com.example.todolist.domain.model;
+package com.uninter.todolist.todolist.todo.domain.model;
 
-import com.example.todolist.application.dto.CreateTodoDto;
-import com.example.todolist.application.dto.UpdateTodoDto;
+import com.uninter.todolist.todolist.todo.application.dto.CreateTodoDto;
+import com.uninter.todolist.todolist.todo.application.dto.UpdateTodoDto;
 import lombok.*;
 
 import java.time.LocalDateTime;
