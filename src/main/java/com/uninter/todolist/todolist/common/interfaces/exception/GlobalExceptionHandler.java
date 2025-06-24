@@ -1,6 +1,6 @@
-package com.uninter.todolist.todolist.todo.interfaces.rest;
+package com.uninter.todolist.todolist.common.interfaces.exception;
 
-import com.uninter.todolist.todolist.todo.domain.exception.BaseException;
+import com.uninter.todolist.todolist.common.domain.exception.BaseException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
