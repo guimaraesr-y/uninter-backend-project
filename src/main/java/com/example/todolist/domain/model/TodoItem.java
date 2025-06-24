@@ -8,10 +8,10 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Getter
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor()
+@AllArgsConstructor()
 public class TodoItem {
-    private final UUID id = UUID.randomUUID();
+    private UUID id;
     private String nome;
     private String responsavel;
     private boolean finalizado = false;

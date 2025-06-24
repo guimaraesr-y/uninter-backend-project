@@ -19,32 +19,40 @@ public class TodoItemEntity {
     private UUID id;
     
     @Column(nullable = false)
-    private String title;
-    
-    @Column(columnDefinition = "TEXT")
-    private String description;
+    private String nome;
     
     @Column(nullable = false)
-    private boolean completed;
+    private String responsavel;
     
-    @Column(name = "created_at", nullable = false, updatable = false)
-    private LocalDateTime createdAt;
-    
-    @Column(name = "updated_at", nullable = false)
-    private LocalDateTime updatedAt;
+    @Column(nullable = false)
+    private boolean finalizado = false;
+
+    @Column(nullable = false)
+    private LocalDateTime dataEntrega;
     
     public TodoItemEntity(TodoItem todoItem) {
         this.id = todoItem.getId();
-        this.title = todoItem.getTitle();
-        this.description = todoItem.getDescription();
-        this.completed = todoItem.isCompleted();
-        this.createdAt = todoItem.getCreatedAt();
-        this.updatedAt = todoItem.getUpdatedAt();
+        this.nome = todoItem.getNome();
+        this.responsavel = todoItem.getResponsavel();
+        this.finalizado = todoItem.isFinalizado();
+        this.dataEntrega = todoItem.getDataEntrega();
     }
 
     public TodoItem toDomain() {
-        TodoItem todoItem = new TodoItem(title, description);
-        todoItem.setCompleted(completed);
+        TodoItem todoItem = new TodoItem(
+                id,
+                nome,
+                responsavel,
+                finalizado,
+                dataEntrega
+        );
+
+        if (finalizado) {
+            todoItem.markAsFinalizado();
+        } else {
+            todoItem.markAsNaoFinalizado();
+        }
+
         return todoItem;
     }
 
