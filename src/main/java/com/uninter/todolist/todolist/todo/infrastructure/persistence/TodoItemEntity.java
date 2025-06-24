@@ -15,7 +15,7 @@ import java.util.UUID;
 public class TodoItemEntity {
 
     @Id
-    @Column(columnDefinition = "CHAR(36)")
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     
     @Column(nullable = false)
