@@ -4,6 +4,7 @@ import com.uninter.todolist.todolist.todo.application.TodoService;
 import com.uninter.todolist.todolist.todo.application.dto.CreateTodoDto;
 import com.uninter.todolist.todolist.todo.application.dto.TodoResponseDto;
 import com.uninter.todolist.todolist.todo.application.dto.UpdateTodoDto;
+import com.uninter.todolist.todolist.todo.domain.exceptions.TodoNotFoundException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -40,7 +41,7 @@ public class TodoController {
 
 
     @GetMapping("/{id}")
-    public TodoResponseDto getTodoById(@PathVariable UUID id) {
+    public TodoResponseDto getTodoById(@PathVariable UUID id) throws TodoNotFoundException {
         return todoService.getTodoById(id);
     }
 
@@ -48,18 +49,18 @@ public class TodoController {
     public TodoResponseDto updateTodo(
             @PathVariable UUID id,
             @Valid @RequestBody UpdateTodoDto request
-    ) {
+    ) throws TodoNotFoundException {
         return todoService.updateTodo(id, request);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteTodo(@PathVariable UUID id) {
+    public ResponseEntity<Void> deleteTodo(@PathVariable UUID id) throws TodoNotFoundException {
         todoService.deleteTodo(id);
         return ResponseEntity.noContent().build();
     }
 
     @PostMapping("/{id}/toggle-status")
-    public TodoResponseDto toggleTodoStatus(@PathVariable UUID id) {
+    public TodoResponseDto toggleTodoStatus(@PathVariable UUID id) throws TodoNotFoundException {
         return todoService.toggleTodoStatus(id);
     }
 

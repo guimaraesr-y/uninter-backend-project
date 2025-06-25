@@ -3,6 +3,7 @@ package com.uninter.todolist.todolist.todo.application;
 import com.uninter.todolist.todolist.todo.application.dto.CreateTodoDto;
 import com.uninter.todolist.todolist.todo.application.dto.TodoResponseDto;
 import com.uninter.todolist.todolist.todo.application.dto.UpdateTodoDto;
+import com.uninter.todolist.todolist.todo.domain.exceptions.TodoNotFoundException;
 import com.uninter.todolist.todolist.todo.domain.model.TodoItem;
 import com.uninter.todolist.todolist.todo.domain.repository.TodoRepository;
 import lombok.RequiredArgsConstructor;
@@ -31,32 +32,32 @@ public class TodoService {
                 .collect(Collectors.toList());
     }
 
-    public TodoResponseDto getTodoById(UUID id) {
+    public TodoResponseDto getTodoById(UUID id) throws TodoNotFoundException {
         return todoRepository.findById(id)
                 .map(TodoResponseDto::fromDomain)
-                .orElseThrow(() -> new RuntimeException("Todo não encontrado com o id: " + id));
+                .orElseThrow(() -> new TodoNotFoundException(id));
     }
 
     @Transactional
-    public TodoResponseDto updateTodo(UUID id, UpdateTodoDto dto) {
+    public TodoResponseDto updateTodo(UUID id, UpdateTodoDto dto) throws TodoNotFoundException {
         TodoItem todo = todoRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Todo não encontrado com o id: " + id));
+                .orElseThrow(() -> new TodoNotFoundException(id));
         todo.update(dto);
         return TodoResponseDto.fromDomain(todoRepository.save(todo));
     }
 
     @Transactional
-    public void deleteTodo(UUID id) {
+    public void deleteTodo(UUID id) throws TodoNotFoundException {
         if (!todoRepository.existsById(id)) {
-            throw new RuntimeException("Todo não encontrado com o id: " + id);
+            throw new TodoNotFoundException(id);
         }
         todoRepository.deleteById(id);
     }
 
     @Transactional
-    public TodoResponseDto toggleTodoStatus(UUID id) {
+    public TodoResponseDto toggleTodoStatus(UUID id) throws TodoNotFoundException {
         TodoItem todo = todoRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Todo não encontrado com o id: " + id));
+                .orElseThrow(() -> new TodoNotFoundException(id));
         
         if (todo.isFinalizado()) {
             todo.markAsNaoFinalizado();
@@ -65,12 +66,6 @@ public class TodoService {
         }
         
         return TodoResponseDto.fromDomain(todoRepository.save(todo));
-    }
-
-    public static class TodoNotFoundException extends RuntimeException {
-        public TodoNotFoundException(String message) {
-            super(message);
-        }
     }
 
 }
