@@ -26,18 +26,9 @@ public class TodoItem {
     }
     
     public void update(UpdateTodoDto dto) {
-        if (dto.nome() != null) {
-            this.nome = dto.nome();
-        }
-        if (dto.responsavel() != null) {
-            this.responsavel = dto.responsavel();
-        }
-        if (dto.dataEntrega() != null) {
-            this.dataEntrega = dto.dataEntrega();
-        }
-        if (dto.finalizado() != null) {
-            this.finalizado = dto.finalizado();
-        }
+        this.nome = dto.nome();
+        this.responsavel = dto.responsavel();
+        this.dataEntrega = dto.dataEntrega();
     }
     
     public void markAsFinalizado() {
